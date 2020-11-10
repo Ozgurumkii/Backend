@@ -8,5 +8,6 @@ class MapController extends Controller
 {
     public function distance($postcode)
     {
+        // mesafe hesaplama yapılacak
     }
 }
