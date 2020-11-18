@@ -20,6 +20,11 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getall(){
+        $apartments = Apartment::get();
+        return $apartments;
+    }
+
     public function index()
     {
         $apartments = $this->user->apartments()->get(["id", "postcode", "state", "userid"])->toArray();
