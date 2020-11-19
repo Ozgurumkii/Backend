@@ -55,8 +55,8 @@ class AppointmentController extends Controller
         $appointment = new Appointment();
         $appointment->customerid = $request->customerid;
         $appointment->apartmentid = $request->apartmentid;
-        $appointment->startdate = $request->startdate;
-        $appointment->enddate = $request->enddate;
+        $appointment->startdate = date('Y-m-d H:i:s', strtotime($request->startdate));
+        $appointment->enddate = date('Y-m-d H:i:s', strtotime($request->enddate));
 
         $appointmentDateControl = self::appointmentDateControl($request);
         if($appointmentDateControl){

@@ -30,5 +30,7 @@ Route::group(["middleware" => "auth.jwt"], function () {
     Route::resource("apartments", "App\Http\Controllers\ApartmentController");
     Route::resource("appointments", "App\Http\Controllers\AppointmentController");
 
+    Route::get("getapartment/{postcode}", "App\Http\Controllers\ApartmentController@getapartment");
     Route::get("apartmentlist", "App\Http\Controllers\ApartmentController@getall");
+    Route::get("getcustomer/{email}", "App\Http\Controllers\CustomerController@getcustomerwithemail");
 });

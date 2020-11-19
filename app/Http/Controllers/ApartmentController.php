@@ -25,6 +25,22 @@ class ApartmentController extends Controller
         return $apartments;
     }
 
+    public function getapartment($postcode){
+        $apartment = Apartment::where('postcode', $postcode)->get();
+        if($apartment->count() > 0){
+            return response()->json([
+                "status" => true,
+                "apartment" => $apartment
+            ]);
+        }
+        else{
+            return response()->json([
+                "status" => false,
+                "message" => "Böyle bir kayıt yoktur"
+            ]);
+        }
+    }
+
     public function index()
     {
         $apartments = $this->user->apartments()->get(["id", "postcode", "state", "userid"])->toArray();

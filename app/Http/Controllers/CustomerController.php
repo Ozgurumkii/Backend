@@ -20,6 +20,24 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getcustomerwithemail($email){
+        $customer = Customer::where('email', $email)->get();
+        if($customer->count() > 0){
+            return response()->json([
+                "status" => true,
+                "customer" => $customer
+            ]);
+        }
+        else{
+            return response()->json([
+                "status" => false,
+                "message" => "Böyle bir kayıt yoktur"
+            ]);
+        }
+    }
+
+
     public function index()
     {
         $customers = $this->user->customers()->get(["id", "name", "surname", "email", "phonenumber", "userid"])->toArray();
